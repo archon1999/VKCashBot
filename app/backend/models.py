@@ -1,5 +1,25 @@
 from django.db import models
 
+class BotUser(models.Model):
+    chat_id = models.IntegerField()
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return self.chat_id
+
+class CashLink(models.Model):
+    url = models.URLField()
+    title = models.TextField(max_length=255)
+    def __str__(self) -> str:
+        return self.title
+
+class Preview(models.Model):
+    user = models.ForeignKey(BotUser, on_delete=models.CASCADE)
+    text = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.user
+
 
 class KeyManager(models.Manager):
     def get_queryset(self):

@@ -12,6 +12,8 @@ class Keys():
 
 
 class Messages():
+    AGE = messages[0]
 
 
 class Smiles():
+    👄 = smiles[0]
