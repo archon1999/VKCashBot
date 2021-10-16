@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Template, BotUser, CashLink, Preview
+from .models import Template, BotUser, CashLink, Review
 
 
 @admin.register(Template)
@@ -12,10 +12,12 @@ class TemplateAdmin(admin.ModelAdmin):
 class BotUserAdmin(admin.ModelAdmin):
     list_display = ['chat_id', 'is_active']
 
+
 @admin.register(CashLink)
 class CashLinkAdmin(admin.ModelAdmin):
-    list_display = ['url', 'title']
+    list_display = ['type', 'title', 'url']
 
-@admin.register(Preview)
-class PreviewAdmin(admin.ModelAdmin):
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
     list_display = ['user', 'text']

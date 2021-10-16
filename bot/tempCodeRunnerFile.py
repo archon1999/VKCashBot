@@ -1,1 +1,0 @@
-from vk_api.longpoll import VkLongPoll, VkEventType, Event
