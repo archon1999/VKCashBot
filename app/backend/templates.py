@@ -31,6 +31,8 @@ class Messages():
     ASK_FOR_LOANS = messages[6].body
     WRITE_REVIEW = messages[7].body
     LOANS_NO_RECEIVED = messages[8].body
+    AFTER_WRITE_REVIEW = messages[9].body
+    GOOD_BYE = messages[10].body
 
 
 class Smiles():

@@ -104,8 +104,10 @@ def income_great_30_key_handler(api, event: Event):
 def yes_key_handler(api, event: Event):
     chat_id = event.chat_id
     user = BotUser.objects.get(chat_id=chat_id)
-    if user.bot_state == States.ASK_FOR_LOANS_1:
+    if user.bot_state == States.ASK_FOR_LOANS_1 or \
+       user.bot_state == States.ASK_FOR_LOANS_2:
         send_message(api, chat_id, Messages.WRITE_REVIEW)
+        send_message(api, chat_id, Messages.AFTER_WRITE_REVIEW)
         user.bot_state = None
         user.save()
 
@@ -128,6 +130,10 @@ def no_key_handler(api, event: Event):
             date=timezone.now()+timezone.timedelta(minutes=1),
             user=user,
         )
+        user.bot_state = None
+        user.save()
+    elif user.bot_state == States.ASK_FOR_LOANS_2:
+        send_message(api, chat_id, Messages.GOOD_BYE)
         user.bot_state = None
         user.save()
 
